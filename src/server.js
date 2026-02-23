@@ -6,6 +6,7 @@ import UsuarioRoutes from './routers/usuarios_routes.js'
 import MatriculaRoutes from './routers/matriculas_routes.js'
 import MateriaRoutes from './routers/materias_routes.js'
 import EstudianteRoutes from './routers/estudiantes_routes.js'
+
 //inicializaciones
 const app = express()
 dotenv.config()
