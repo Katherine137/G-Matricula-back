@@ -24,7 +24,7 @@ const login = async (req,res) =>{
         if(!UsuariosBDD) return res.status(401).json({msg: "lo sentimos, el email no se encuentra registrado"})
         const verificarPassword = await UsuariosBDD.matchPassword(password)
         if(!verificarPassword) return res.status(401).json({msg: "lo sentimos, la contraseña es incorrecta"})
-        const token = jwt.sign({id:UsuariosBDD._id}, process.env.JWT_SCRET, {expiresIn: '1h'})
+        const token = jwt.sign({id:UsuariosBDD._id}, process.env.JWT_SECRET, {expiresIn: '1h'})
         res.status(200).json({
             token,
             Usuarios:{
