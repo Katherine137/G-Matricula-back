@@ -9,7 +9,7 @@ const verificarTokenJWT = async (req,res, next) =>{
     const {authorization} = req.headers
     if (!authorization) return res.status(401).json({msg: "Acceso denegado: Token no proporcionado"})
     try {
-        const token = authorization.splir(" ")[1]
+        const token = authorization.split(" ")[1]
         const{id} = jwt.verify(token, process.env.JWT_SECRET)
 
         const UsuariosBDD = await Usuarios.findById(id).lean().select("-password")
