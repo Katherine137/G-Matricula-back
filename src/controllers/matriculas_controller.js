@@ -24,8 +24,8 @@ const listarMatriculas = async (req,res) =>{
     try {
         const {id} = req.params
         const matriculas = await Matriculas.find().sort({createdAt: -1})
-            .populate("estudiantes")
-            .populate("materias")
+            .populate("estudiante")
+            .populate("materia")
         res.json({message: "Matriculas", matriculas})
     } catch (error) {
         res.status(500).json({message: "Error al obtener matriculas", error:error.message})
