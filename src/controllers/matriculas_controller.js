@@ -22,6 +22,7 @@ const crearMatriculas = async (req,res) =>{
 
 const listarMatriculas = async (req,res) =>{
     try {
+        const {id} = req.params
         const matriculas = await Matriculas.find().sort({createdAt: -1})
             .populate("estudiantes")
             .populate("materias")

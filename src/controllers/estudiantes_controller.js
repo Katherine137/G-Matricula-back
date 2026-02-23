@@ -40,6 +40,7 @@ const obtenerEstudiantesPorID = async (req,res) =>{
 
 const actualizarEstudiantes = async (req,res) =>{
     try {
+        const {id} = req.params
         const estudianteActualizado = await Estudiantes.findByIdAndUpdate(
             id,
             req.body,
@@ -56,6 +57,7 @@ const actualizarEstudiantes = async (req,res) =>{
 
 const eliminarEstudiantes = async (req,res) =>{
     try {
+        const {id} = req.params
         const estudianteEliminado = await Estudiantes.findByIdAndDelete(id)
         if (!estudianteEliminado) {
             return res.status(404).json({message: "Estudiante no encontrado"})

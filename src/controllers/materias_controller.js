@@ -36,6 +36,7 @@ const obtenerMateriasPorID = async (req,res) =>{
 
 const actualizarMaterias = async (req,res) =>{
     try {
+        const {id} = req.params
         const materiaActualizada = await Materias.findByIdAndUpdate(
             id,
             req.body,
@@ -52,6 +53,7 @@ const actualizarMaterias = async (req,res) =>{
 
 const eliminarMaterias = async (req,res) =>{
     try {
+        const {id} = req.params
         const materiaEliminada = await Materias.findByIdAndDelete(id)
         if (!materiaEliminada) {
             return res.status(404).json({message: "Materia no encontrada"})
