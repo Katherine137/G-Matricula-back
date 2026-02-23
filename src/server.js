@@ -24,5 +24,5 @@ app.use('/api/Matricula', MatriculaRoutes)
 app.use('/api/Materia', MateriaRoutes)
 //ruta estudiantes
 app.use('/api/Estudiante', EstudianteRoutes)
-//exportar la instancia express - app
+//exportar instancia express - app
 export default app
