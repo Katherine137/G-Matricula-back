@@ -1,0 +1,28 @@
+import jwt from "jsonwebtoken"
+import Usuarios from "../models/Usuarios.js"
+
+const crearTokenJWT = (id) =>{
+    return jwt.sign({id}, process.env.JWT_SECRET, { expiresIn: "1d" })
+}
+
+const verificarTokenJWT = async (req,res, next) =>{
+    const {authorization} = req.headers
+    if (!authorization) return res.status(401).json({msg: "Acceso denegado: Token no proporcionado"})
+    try {
+        const token = authorization.splir(" ")[1]
+        const{id} = jwt.verify(token, process.env.JWT_SECRET)
+
+        const UsuariosBDD = await Usuarios.findById(id).lean().select("-password")
+        if(!UsuariosBDD) return res.status(401).json({msg: "Usuario no encontrado"})
+        req.UsuarioHeader = UsuariosBDD
+        next()
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({ msg: `Token inválido o expirado - ${error}`})
+    }
+}
+
+export{
+    crearTokenJWT,
+    verificarTokenJWT
+}
