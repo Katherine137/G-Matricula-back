@@ -5,6 +5,6 @@ const router = Router()
 router.post('/Matriculas', crearMatriculas)
 router.get('/listarMa', listarMatriculas)
 router.put('/actualizarMa/:id', actualizarMatriculas)
-router.delete('/eliminar/:id', eliminarMatriculas)
+router.delete('/eliminarMa/:id', eliminarMatriculas)
 
 export default router
