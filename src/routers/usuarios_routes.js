@@ -4,7 +4,7 @@ import { verificarTokenJWT } from "../middlewares/authMiddleware.js";
 const router = Router()
 
 router.post('/registro', registro)
-router.get('/login', login)
-router.post('/perfil', verificarTokenJWT, perfil)
+router.post('/login', login)
+router.get('/perfil', verificarTokenJWT, perfil)
 
 export default router
