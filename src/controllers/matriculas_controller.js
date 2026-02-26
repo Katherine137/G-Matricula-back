@@ -62,9 +62,14 @@ const eliminarMatriculas = async (req,res) =>{
     }
 }
 
+const obtenerMatriculaPorID = async (req,res) =>{
+    const matricula = await Matriculas.findById(req.params.id)
+    res.json({message: "Matricula", matricula})
+}
 export {
     crearMatriculas,
     listarMatriculas,
+    obtenerMatriculaPorID,
     actualizarMatriculas,
     eliminarMatriculas
 }
